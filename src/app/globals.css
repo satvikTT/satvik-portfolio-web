@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00ff88;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00cc6a;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base styles */
+body {
+  @apply bg-primary text-textPrimary antialiased;
+  overflow-x: hidden;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  @apply outline-2 outline-offset-2 outline-accent;
+}
+
+/* Utility classes */
+@layer utilities {
+  .section-container {
+    @apply max-w-6xl mx-auto px-6 py-20 md:px-8;
+  }
+
+  .heading-primary {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold mb-4;
+  }
+
+  .heading-secondary {
+    @apply text-3xl md:text-4xl font-bold mb-8;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent to-blue-400 bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-accent text-primary font-semibold rounded-lg 
+           hover:bg-accentHover transition-all duration-300 
+           hover:scale-105 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 border-2 border-accent text-accent font-semibold 
+           rounded-lg hover:bg-accent hover:text-primary transition-all 
+           duration-300 hover:scale-105 active:scale-95;
+  }
+
+  .card {
+    @apply bg-secondary border border-border rounded-xl p-6 
+           hover:border-accent transition-all duration-300 
+           hover:shadow-lg hover:shadow-accent/10;
+  }
+}
