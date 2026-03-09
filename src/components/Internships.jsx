@@ -67,11 +67,11 @@ export default function Internships() {
             className="card p-6"
           >
             <h3 className="text-xl font-semibold">
-              {internship.role}
+              {internship.company}
             </h3>
 
             <p className="text-sm text-textSecondary mt-1">
-              {internship.company}
+              {internship.role}
             </p>
 
             <p className="text-sm text-textSecondary italic mt-1">

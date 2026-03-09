@@ -53,9 +53,9 @@ export default function Hero() {
         {/* Profile Image */}
 <motion.div
   variants={itemVariants}
-  className="mb-6 flex justify-center"
+  className="mt10 mb-6 flex justify-center"
 >
-  {/* SMALL IMAGE (hover trigger) */}
+
   <motion.div
     onMouseEnter={() => setIsHovered(true)}
     onMouseLeave={() => setIsHovered(false)}
@@ -76,7 +76,16 @@ export default function Hero() {
       fill
       priority
       sizes="(max-width: 768px) 144px, 176px"
-      className="object-cover"
+      className="
+    object-cover
+    object-[center_20%]
+    transition-transform
+    duration-300
+    ease-in-out
+    group-hover:scale-110
+    cursor-pointer
+  "
+
     />
   </motion.div>
 
@@ -117,7 +126,16 @@ export default function Hero() {
           src="/images/profile.jpg"
           alt="Satvik Bhagat"
           fill
-          className="object-cover"
+          className="
+    object-cover
+    object-[center_20%]
+    transition-transform
+    duration-300
+    ease-in-out
+    group-hover:scale-110
+    cursor-pointer
+  "
+
         />
       </motion.div>
     </motion.div>
