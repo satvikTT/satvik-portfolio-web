@@ -71,7 +71,7 @@ export default function Hero() {
     "
   >
     <Image
-      src="/images/profile.jpg"
+      src="/images/profile.JPG"
       alt="Satvik Bhagat"
       fill
       priority
@@ -123,7 +123,7 @@ export default function Hero() {
         "
       >
         <Image
-          src="/images/profile.jpg"
+          src="/images/profile.JPG"
           alt="Satvik Bhagat"
           fill
           className="
