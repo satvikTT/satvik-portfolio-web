@@ -2,75 +2,156 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-/* Custom scrollbar for dark theme */
-::-webkit-scrollbar {
-  width: 8px;
+/* ============================================
+   CSS VARIABLES — Dark / Light Theme
+   ThemeToggle adds/removes 'light' on <html>
+   ============================================ */
+:root {
+  --bg-primary:       #03030a;
+  --bg-card:          rgba(255, 255, 255, 0.03);
+  --bg-card-hover:    rgba(255, 255, 255, 0.06);
+  --text-primary:     #e2e8f0;
+  --text-secondary:   rgba(226, 232, 240, 0.5);
+  --text-muted:       rgba(226, 232, 240, 0.25);
+  --border-subtle:    rgba(0, 245, 255, 0.08);
+  --border-normal:    rgba(0, 245, 255, 0.18);
+  --cyan:             #00f5ff;
+  --purple:           #7b2fff;
+  --green:            #00ff9d;
+  --red:              #ff6b6b;
+  --section-bg:       #03030a;
 }
 
-::-webkit-scrollbar-track {
-  background: #1a1a1a;
+html.light {
+  --bg-primary:       #f0f6ff;
+  --bg-card:          rgba(255, 255, 255, 0.8);
+  --bg-card-hover:    rgba(255, 255, 255, 0.95);
+  --text-primary:     #0f172a;
+  --text-secondary:   rgba(15, 23, 42, 0.6);
+  --text-muted:       rgba(15, 23, 42, 0.35);
+  --border-subtle:    rgba(0, 150, 200, 0.12);
+  --border-normal:    rgba(0, 150, 200, 0.28);
+  --cyan:             #0099bb;
+  --purple:           #6b21cc;
+  --green:            #059669;
+  --red:              #dc2626;
+  --section-bg:       #f0f6ff;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #00ff88;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #00cc6a;
-}
-
-/* Smooth scrolling */
+/* ============================================
+   BODY & BASE
+   ============================================ */
 html {
   scroll-behavior: smooth;
 }
 
-/* Base styles */
 body {
-  @apply bg-primary text-textPrimary antialiased;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Focus styles for accessibility */
+/* ============================================
+   SECTION BACKGROUNDS
+   ============================================ */
+section {
+  background-color: var(--section-bg);
+  transition: background-color 0.4s ease;
+}
+
+footer {
+  background-color: var(--section-bg);
+  transition: background-color 0.4s ease;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cyan);
+  border-radius: 4px;
+  opacity: 0.5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--purple);
+}
+
+/* ============================================
+   FOCUS
+   ============================================ */
 *:focus-visible {
-  @apply outline-2 outline-offset-2 outline-accent;
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
 }
 
-/* Utility classes */
+/* ============================================
+   UTILITY CLASSES  
+   ============================================ */
 @layer utilities {
   .section-container {
     @apply max-w-6xl mx-auto px-6 py-20 md:px-8;
   }
 
-  .heading-primary {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold mb-4;
+  .cyber-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
   }
 
-  .heading-secondary {
-    @apply text-3xl md:text-4xl font-bold mb-8;
+  .cyber-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-normal);
+  }
+
+  .text-cyber-primary {
+    color: var(--text-primary);
+  }
+
+  .text-cyber-secondary {
+    color: var(--text-secondary);
+  }
+
+  .text-cyber-muted {
+    color: var(--text-muted);
   }
 
   .text-gradient {
-    @apply bg-gradient-to-r from-accent to-blue-400 bg-clip-text text-transparent;
+    background: linear-gradient(to right, var(--cyan), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
+}
 
-  .btn-primary {
-    @apply px-6 py-3 bg-accent text-primary font-semibold rounded-lg 
-           hover:bg-accentHover transition-all duration-300 
-           hover:scale-105 active:scale-95;
-  }
+/* ============================================
+   PLACEHOLDER STYLES (global, can't do inline)
+   ============================================ */
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+  font-family: monospace;
+}
 
-  .btn-secondary {
-    @apply px-6 py-3 border-2 border-accent text-accent font-semibold 
-           rounded-lg hover:bg-accent hover:text-primary transition-all 
-           duration-300 hover:scale-105 active:scale-95;
-  }
+/* ============================================
+   LIGHT MODE — override hardcoded inline styles
+   on canvas / hero background
+   ============================================ */
+html.light canvas {
+  opacity: 0.25;
+}
 
-  .card {
-    @apply bg-secondary border border-border rounded-xl p-6 
-           hover:border-accent transition-all duration-300 
-           hover:shadow-lg hover:shadow-accent/10;
-  }
+html.light #home {
+  background: linear-gradient(135deg, #e8f4ff 0%, #f0e8ff 100%);
 }

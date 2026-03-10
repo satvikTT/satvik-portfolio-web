@@ -7,15 +7,15 @@ import Contact from '../components/Contact'
 import Footer from '../components/Footer'
 import Achievement from '../components/Achievement'
 import Education from '../components/Education'
-import ThemeToggle from '../components/ThemeToggle'
 import CustomCursor from '../components/CustomCursor'
+import Navbar from '../components/Navbar'
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <ThemeToggle />
-      <CustomCursor />
+      {<Navbar />}
+      {<Hero />}
+      {<CustomCursor />}
       {<Achievement />}
       {<Education />}
       {<Projects />}
